@@ -1,5 +1,7 @@
 package ModifiedConstructor;
 
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Service extends Element {
     private int queue, maxqueue, failure;
@@ -7,6 +9,8 @@ public class Service extends Element {
     private double[] devicesTime;
     private double meanLoadedDevices;
     private int loadedDevices;
+    private Map<Double, Element> propability;
+    private int numExitElem;
 
     public Service(double delay, int numDeivce) {
         super(delay);
@@ -18,7 +22,8 @@ public class Service extends Element {
         devicesTime = new double[numDeivce];
         meanLoadedDevices = 0.0;
         loadedDevices = 0;
-
+        propability = new TreeMap<>();
+        numExitElem = 0;
     }
 
     @Override
@@ -46,9 +51,31 @@ public class Service extends Element {
             takeFreeDevice();
         }
         calculateAndSetTnext();
-        if(super.getNextElement() != null) {
+        Element nextElement = getNextElement();  // Збереження результату виклику методу
+
+        if (!propability.isEmpty() && nextElement != null) {
+            nextElement.inAct();
+        } else if (super.getNextElement() != null) {
             super.getNextElement().inAct();
+        } else {
+            numExitElem++;
         }
+
+    }
+
+    public void addProbBranch(Double prob, Element nextElement) {
+        propability.put(prob, nextElement);
+    }
+
+    @Override
+    public Element getNextElement() {
+        double randomValue = Math.random();
+        for (Double keyProb : propability.keySet()) {
+            if (randomValue < keyProb) {
+                return propability.get(keyProb);
+            }
+        }
+        return null;
     }
 
     private void releaseDevice() {
@@ -111,8 +138,15 @@ public class Service extends Element {
 
     @Override
     public void printInfo() {
+        System.out.println();
         super.printInfo();
         System.out.println("failure = " + this.getFailure());
+    }
+
+    @Override
+    public void printResult() {
+        super.printResult();
+        System.out.println("number of exit elements = " + numExitElem);
     }
 
     @Override
