@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Task3 {
     public static void main(String[] args) {
-        Create c = new Create(2.0);
-        Service s1 = new Service(1.0);
+        Create c = new Create(1.0);
+        Service s1 = new Service(2.0);
         Service s2 = new Service(2.0);
-        Service s3 = new Service(0.5);
+        Service s3 = new Service(1.0);
 
         c.setNextElement(s1);
         s1.setNextElement(s2);
@@ -25,7 +25,7 @@ public class Task3 {
 
         s1.setMaxqueue(5);
         s2.setMaxqueue(5);
-        s3.setMaxqueue(5);
+        s3.setMaxqueue(1);
 
         ArrayList<Element> list_model = new ArrayList<>();
         list_model.add(c);

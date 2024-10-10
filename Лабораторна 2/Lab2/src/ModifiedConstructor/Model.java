@@ -1,4 +1,4 @@
-package ModelConstructor;
+package ModifiedConstructor;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class Model {
         while (tcurr < time) {
             tnext = Double.MAX_VALUE;
             for (Element e : list) {
-                if (e.getTnext() < tnext) {
+                if (e.getTnext() < tnext && e.getTnext() >= 0) {
                     tnext = e.getTnext();
                     event = e.getId();
                 }
@@ -34,20 +34,14 @@ public class Model {
                 e.setTcurr(tcurr);
             }
             list.get(event).outAct();
-//            for (Element e : list) {
-//                if (e.getTnext() == tcurr) {
-//                    e.outAct();
-//                }
-//            }
+
             printInfo();
         }
         // Adding resting elements in queues to failure
         for (Element e : list) {
             if (e instanceof Service s) {
                 s.addRestFailure(s.getQueue());
-                if (s.getState() == 1) {
-                    s.addRestFailure(1);
-                }
+                s.addRestFailure(s.getLoadedDevices());
             }
         }
         printResult(time);
@@ -74,7 +68,7 @@ public class Model {
                     System.out.println("number of failure = " + p.getFailure() +
                             "\nmean length of queue = " +
                             p.getMeanQueue() / tcurr +
-                            "\naverage service load = " + p.getMeanLoad() / tcurr);
+                            "\naverage num loaded devices = " + p.getMeanLoadedDevices() / tcurr);
                     break;
                 case "Create":
                     create_elem = e.getQuantity();
