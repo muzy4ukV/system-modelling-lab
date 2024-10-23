@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Task3 {
     public static void main(String[] args) {
-        Create c = new Create(1.0);
-        Service s1 = new Service(2.0);
-        Service s2 = new Service(2.0);
+        Create c = new Create(4.0);
+        Service s1 = new Service(1.0);
+        Service s2 = new Service(1.0);
         Service s3 = new Service(1.0);
 
         c.setNextElement(s1);
@@ -19,13 +19,13 @@ public class Task3 {
         s3.setName("PROCESS 3");
 
         c.setDistribution("exp");
-        s1.setDistribution("norm");
+        s1.setDistribution("exp");
         s2.setDistribution("exp");
         s3.setDistribution("exp");
 
         s1.setMaxqueue(5);
         s2.setMaxqueue(5);
-        s3.setMaxqueue(1);
+        s3.setMaxqueue(5);
 
         ArrayList<Element> list_model = new ArrayList<>();
         list_model.add(c);

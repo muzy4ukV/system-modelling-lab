@@ -18,8 +18,8 @@ public class Task4 {
         c.setDistribution("exp");
         s1.setDistribution("exp");
         s2.setDistribution("exp");
-        s1.setMaxqueue(5);
-        s2.setMaxqueue(5);
+        s1.setMaxqueue(10);
+        s2.setMaxqueue(10);
 
         ArrayList<Element> list_model = new ArrayList<>();
         list_model.add(c);

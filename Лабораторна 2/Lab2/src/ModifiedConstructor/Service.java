@@ -51,6 +51,7 @@ public class Service extends Element {
             takeFreeDevice();
         }
         calculateAndSetTnext();
+
         Element nextElement = getNextElement();  // Збереження результату виклику методу
 
         if (!propability.isEmpty() && nextElement != null) {

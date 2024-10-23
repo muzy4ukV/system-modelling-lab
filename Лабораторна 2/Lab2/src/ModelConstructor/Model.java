@@ -34,11 +34,7 @@ public class Model {
                 e.setTcurr(tcurr);
             }
             list.get(event).outAct();
-//            for (Element e : list) {
-//                if (e.getTnext() == tcurr) {
-//                    e.outAct();
-//                }
-//            }
+
             printInfo();
         }
         // Adding resting elements in queues to failure

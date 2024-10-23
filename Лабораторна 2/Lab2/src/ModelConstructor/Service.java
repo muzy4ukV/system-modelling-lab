@@ -36,7 +36,7 @@ public class Service extends Element {
             super.setState(1);
             super.setTnext(super.getTcurr() + super.getDelay());
         }
-        if(super.getNextElement() != null) {
+        if (super.getNextElement() != null) {
             super.getNextElement().inAct();
         }
     }
@@ -80,6 +80,7 @@ public class Service extends Element {
     public double getMeanLoad() {
         return meanLoad;
     }
+
     public double getMeanQueue() {
         return meanQueue;
     }
