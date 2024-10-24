@@ -1,11 +1,11 @@
 package clinic;
 
-import core.Job;
+import ModelConstructor.Job;
 
 import java.util.ArrayDeque;
 import java.util.HashMap;
 
-public class RegistrationProcess extends core.Process {
+public class RegistrationProcess extends ModelConstructor.Process {
     private int prioritizedPatientType;
     private HashMap<Integer, Double> patientTypedDelays;
 

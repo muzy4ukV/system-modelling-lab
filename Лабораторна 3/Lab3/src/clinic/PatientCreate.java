@@ -1,7 +1,7 @@
 package clinic;
 
-import core.Create;
-import core.Job;
+import ModelConstructor.Create;
+import ModelConstructor.Job;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package core;
+package ModelConstructor;
 
 public class Create extends Element {
     private int failures = 0;

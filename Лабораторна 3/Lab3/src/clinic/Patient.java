@@ -1,6 +1,6 @@
 package clinic;
 
-import core.Job;
+import ModelConstructor.Job;
 
 public class Patient extends Job {
     int type;

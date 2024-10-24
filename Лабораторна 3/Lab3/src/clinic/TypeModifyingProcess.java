@@ -2,7 +2,7 @@ package clinic;
 
 import java.util.HashMap;
 
-public class TypeModifyingProcess extends core.Process {
+public class TypeModifyingProcess extends ModelConstructor.Process {
 
     private HashMap<Integer, Integer> typeModifyingMap;
 

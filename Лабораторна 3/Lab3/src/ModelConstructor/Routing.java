@@ -1,4 +1,4 @@
-package core;
+package ModelConstructor;
 
 public enum Routing {
     BY_PROBABILITY,

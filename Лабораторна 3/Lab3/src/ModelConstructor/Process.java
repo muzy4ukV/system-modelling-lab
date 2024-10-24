@@ -1,4 +1,4 @@
-package core;
+package ModelConstructor;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -13,6 +13,7 @@ public class Process extends Element {
     protected double workTime = 0.0;
     protected double totalLeaveTime = 0.0;
     protected double previousLeaveTime = 0.0;
+    protected int restJobs = 0;
 
     public Process(String name, double delayMean, int channelsNum) {
         super(name, delayMean);
@@ -85,6 +86,24 @@ public class Process extends Element {
             totalLeaveTime += super.getTCurr() - previousLeaveTime;
             previousLeaveTime = super.getTCurr();
         }
+    }
+
+    protected void addRestJobs(int rest) {
+        restJobs += rest;
+    }
+
+    public int getRestJobs(){
+        return restJobs;
+    }
+
+    protected int getNumOfJobs() {
+        int num = 0;
+        for(Channel ch: channels) {
+            if(ch.getState() == 1){
+                num++;
+            }
+        }
+        return num;
     }
 
     protected void startNextJobs() {
@@ -181,14 +200,16 @@ public class Process extends Element {
 
     @Override
     public void printInfo() {
-        System.out.println(getName() +
-                " state = " + getState() +
-                " quantity = " + getQuantity() +
-                " tnext = " + getTNext() +
-                " failures = " + failures +
-                " queue size = " + queue.size()
+        System.out.printf("%-25s | State: %-2d | Quantity: %-5d | TNext: %-10s | Failures: %-5d | Queue Size: %-5d%n",
+                getName(),
+                getState(),
+                getQuantity(),
+                (getTNext() == Double.MAX_VALUE ? "Inf" : String.format("%.2f", getTNext())),
+                failures,
+                queue.size()
         );
     }
+
 
 
     public int getQueueSize() {

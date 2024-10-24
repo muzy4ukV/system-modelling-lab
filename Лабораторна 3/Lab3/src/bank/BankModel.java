@@ -1,13 +1,13 @@
 package bank;
 
-import core.Dispose;
-import core.Element;
-import core.Job;
-import core.Process;
+import ModelConstructor.Dispose;
+import ModelConstructor.Element;
+import ModelConstructor.Job;
+import ModelConstructor.Process;
 
 import java.util.ArrayList;
 
-public class BankModel extends core.Model {
+public class BankModel extends ModelConstructor.Model {
     private double meanClientsNum = 0;
     private int totalSwitchedJobs = 0;
 

@@ -1,4 +1,4 @@
-package core;
+package ModelConstructor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -206,11 +206,11 @@ public class Element {
     }
 
     public void printInfo() {
-        System.out.println(name + " state = " + getState() + " quantity = " + getQuantity() + " tnext = " + getTNext());
+        System.out.printf("Element: %-16s | State: %-2d | Quantity: %-5d | TNext: %.2f%n", name, state, quantity, tNext);
     }
 
     public void printResult() {
-        System.out.println(name + " quantity = " + getQuantity());
+        System.out.printf("Element: %s | Total Quantity: %d%n", name, quantity);
     }
 
     public int getId() {

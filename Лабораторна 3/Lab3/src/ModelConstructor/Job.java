@@ -1,4 +1,4 @@
-package core;
+package ModelConstructor;
 
 public class Job {
     private static int nextId = 0;

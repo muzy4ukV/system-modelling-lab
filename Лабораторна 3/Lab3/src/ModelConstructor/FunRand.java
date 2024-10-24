@@ -1,4 +1,4 @@
-package core;
+package ModelConstructor;
 
 import java.util.Random;
 

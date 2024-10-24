@@ -3,8 +3,8 @@ package bank;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SwitchingProcess extends core.Process {
-    private final ArrayList<core.Process> neighbors = new ArrayList<>();
+public class SwitchingProcess extends ModelConstructor.Process {
+    private final ArrayList<ModelConstructor.Process> neighbors = new ArrayList<>();
     private final int deltaToSwitch;
     private int switchedJobs = 0;
 
@@ -18,7 +18,7 @@ public class SwitchingProcess extends core.Process {
         this.deltaToSwitch = deltaToSwitch;
     }
 
-    public void setNeighbors(core.Process... neighbors) {
+    public void setNeighbors(ModelConstructor.Process... neighbors) {
         this.neighbors.addAll(Arrays.asList(neighbors));
     }
 
